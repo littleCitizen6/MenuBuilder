@@ -4,7 +4,9 @@ using System.Text;
 
 namespace MenuBuilder.Abstraction
 {
-    interface IMenu
+    public interface IMenu
     {
+        Dictionary<string, Action> Actions { get; set; }
+        string Content { get;  set; }
     }
 }
