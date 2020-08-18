@@ -1,4 +1,5 @@
 ﻿using MenuBuilder.Abstraction;
+using MenuBuilder.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,16 @@ namespace MenuBuilder.Validators
         {
             _conditions = new Dictionary<string, bool>();
         }
-        public void BootConditions(IMenu menu, string key)
+        public void BootConditions<T>(string key, IMenu menu)
         {
             _conditions.Clear();
-            _conditions.Add("is key exist", menu.Actions().Keys.Contains(key));
+            _conditions.Add("is in format", key.TryParse<T>(out T t));
+            _conditions.Add("is key exist", menu.Actions.Keys.Contains(key));
         }
 
-        public bool IsValid(string parm)
+        public bool IsValid(string parm, IMenu menu)
         {
+            BootConditions(parm, menu);
             return !_conditions.ContainsValue(false);
         }
     }

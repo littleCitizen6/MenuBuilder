@@ -10,21 +10,22 @@ namespace MenuBuilder.Browsers
         private Stack<IMenu> _history;
         private IMenu _current = null;
 
-        IMenu IBrowser.CurrentOrDefault { 
+        IMenu IBrowser.Current { 
             get => _current; 
             set 
             {
-                if (_current != null) 
-                {
-                    _history.Push(_current);
-                }
+                _history.Push(_current);
                 this._current = value;
             }
         }
 
-        public StackBrowser()
+        public bool Continue { get ; set ; }
+
+        public StackBrowser(IMenu menu)
         {
             _history = new Stack<IMenu>();
+            Continue = true;
+            _current = menu;
         }
 
         public IMenu PreviousOrDefult()
