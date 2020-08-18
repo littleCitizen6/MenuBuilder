@@ -6,6 +6,6 @@ namespace MenuBuilder.Abstraction
 {
     public interface IParamProvider
     {
-        T Get<T>();
+        T Get<T>() where T : struct, IComparable, IFormattable, IConvertible, IComparable<T>, IEquatable<T>;
     }
 }

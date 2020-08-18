@@ -7,7 +7,6 @@ namespace MenuBuilder.Abstraction
     public interface IBrowser
     {
         IMenu PreviousOrDefult();
-        IMenu CurrentOrDefault();
-        bool AddMenu(IMenu menu) ;
+        IMenu CurrentOrDefault { get; set; }
     }
 }

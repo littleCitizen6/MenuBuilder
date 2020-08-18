@@ -6,7 +6,7 @@ namespace MenuBuilder.Abstraction
 {
     public interface IPresenter
     {
-        void Display();
-        void DisplayOnly();
+        void Display(string message);
+        void DisplayOnly(string message);
     }
 }
