@@ -6,8 +6,8 @@ namespace MenuBuilder.Abstraction
 {
     public interface IParamVaidator
     {
-        void BootConditions<T>(IMenu menu, T key);
-        bool IsValid<T>(T parm);
+        void BootConditions(IMenu menu, string key);
+        bool IsValid(string parm);
 
     }
 }

@@ -13,13 +13,13 @@ namespace MenuBuilder.Validators
         {
             _conditions = new Dictionary<string, bool>();
         }
-        public void BootConditions<T>(IMenu menu, T key)
+        public void BootConditions(IMenu menu, string key)
         {
             _conditions.Clear();
-            _conditions.Add("is key exist", menu.Actions<T>().Keys.Contains(key));
+            _conditions.Add("is key exist", menu.Actions().Keys.Contains(key));
         }
 
-        public bool IsValid<T>(T parm)
+        public bool IsValid(string parm)
         {
             return !_conditions.ContainsValue(false);
         }
