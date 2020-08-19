@@ -38,26 +38,30 @@ namespace MenuBuilderTrying
             Runner.AddMenu("m1", headMenu);
             Runner.AddMenu("m2", menu2);
         }
-        public void Action1()
+        public string Action1()
         {
             _presenter.WaitForKeyDisplay("hello fucker");
+            return "succeded";
         }
-        public void Previous()
+        public string Previous()
         {
             if(_browser.PreviousOrDefult()==null)
             {
                 _presenter.WaitForKeyDisplay("there is no previous menu, press key to continue");
             }
+            return "succeded";
         }
 
-        public void Exit()
+        public string Exit()
         {
             Runner.Exit();
+            return "succeded";
         }
 
-        public void MoveToMenu2()
+        public string MoveToMenu2()
         {
             Runner.Browser.Current = Runner.Menus["m2"];
+            return "succeded";
         }
     }
 }
