@@ -9,8 +9,6 @@ namespace MenuBuilder.Abstraction
     {
         Dictionary<string, Action> Actions { get; }
         string Content { get; }
-        IParamVaidator Validator { get; set; }
-
         void AddAction(string key, Action action, string describe);
         
     }

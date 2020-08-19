@@ -17,5 +17,11 @@ namespace MenuBuilder.Presenters
             Console.Clear();
             Console.WriteLine(message);
         }
+
+        public void WaitForKeyDisplay(string message)
+        {
+            Console.WriteLine(message);
+            Console.ReadKey();
+        }
     }
 }

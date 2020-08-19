@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MenuBuilder.Abstraction;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MenuBuilder.Menus
 {
-    public class StringMenu
+    public class StringMenu:IMenu
     {
         private StringBuilder _content;
         public Dictionary<string, Action> Actions { get; set; }
@@ -13,6 +14,7 @@ namespace MenuBuilder.Menus
         public StringMenu()
         {
             _content = new StringBuilder();
+            Actions = new Dictionary<string, Action>();
         }
 
         public string Content { get => _content.ToString(); }
