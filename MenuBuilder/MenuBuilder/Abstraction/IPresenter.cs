@@ -8,5 +8,6 @@ namespace MenuBuilder.Abstraction
     {
         void Display(string message);
         void DisplayOnly(string message);
+        void WaitForKeyDisplay(string message);
     }
 }

@@ -15,6 +15,7 @@ namespace MenuBuilder.Menus
         public NumbersMenu()
         {
             _content = new StringBuilder();
+            Actions = new Dictionary<string, Action>();
         }
         
         public string Content {get => _content.ToString();}

@@ -10,9 +10,9 @@ namespace MenuBuilder
         public Dictionary<TKey, IMenu> Menus { get; set; }
         public IPresenter Presenter { get; set; }
         public IParamProvider Provider { get; set; }
-        public IParamVaidator<T> ParamVaidator { get; set; }
+        public IParamVaidator ParamVaidator { get; set; }
         public IBrowser Browser { get; set; }
-        public MenuRunner(IPresenter presenter, IParamProvider provider, IParamVaidator<T> validator, IBrowser browser)
+        public MenuRunner(IPresenter presenter, IParamProvider provider, IParamVaidator validator, IBrowser browser)
         {
             Menus = new Dictionary<TKey, IMenu>();
             Presenter = presenter;
@@ -27,10 +27,8 @@ namespace MenuBuilder
             
         }
 
-        public void Run(IMenu firstMenu)
+        public void Run()
         {
-
-            Browser.Current = firstMenu;
             do
             {
                 Presenter.DisplayOnly(Browser.Current.Content);
@@ -38,6 +36,10 @@ namespace MenuBuilder
                 if (ParamVaidator.IsValid(choice, Browser.Current))
                 {
                     Browser.Current.Actions[choice]();
+                }
+                else
+                {
+                    Presenter.WaitForKeyDisplay("invalid param, please insert correct option, press key to continue");
                 }
             } while (Browser.Continue);
         }
