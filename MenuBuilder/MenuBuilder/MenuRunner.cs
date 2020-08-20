@@ -27,8 +27,9 @@ namespace MenuBuilder
             
         }
 
-        public void Run()
+        public void Run(IMenu headMenu)
         {
+            Browser.Current = headMenu;
             do
             {
                 Presenter.DisplayOnly(Browser.Current.Content);
@@ -42,6 +43,7 @@ namespace MenuBuilder
                     Presenter.WaitForKeyDisplay("invalid param, please insert correct option, press key to continue");
                 }
             } while (Browser.Continue);
+
         }
 
         public void Exit()

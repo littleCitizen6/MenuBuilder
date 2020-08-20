@@ -18,25 +18,30 @@ namespace MenuBuilderTrying
         private IParamProvider _provider;
         private IPresenter _presenter;
         private IParamVaidator _validator;
+        private IMenu _head;
         public MenuRunner<string> Runner { get; set; }
 
         public Class1()
         {
-            var headMenu = new StringMenu();
-            headMenu.AddAction("void1", Action1, "for say hi");
-            headMenu.AddAction("m2", MoveToMenu2, "for move to menu 2");
-            headMenu.AddAction("exit", Exit, "for exit");
+            _head = new StringMenu();
+            _head.AddAction("void1", Action1, "for say hi");
+            _head.AddAction("m2", MoveToMenu2, "for move to menu 2");
+            _head.AddAction("exit", Exit, "for exit");
             var menu2 = new NumbersMenu();
             menu2.AddAction("1", Action1, "for say hi");
             menu2.AddAction("2", Exit, "for exit");
             menu2.AddAction("3", Previous, "for the previous menu");
-            _browser = new StackBrowser(headMenu);
+            _browser = new StackBrowser();
             _provider = new ConsoleProvider();
             _presenter = new ConsolePresenter();
             _validator = new StringParamValidator();
             Runner = new MenuRunner<string>(_presenter, _provider, _validator, _browser);
-            Runner.AddMenu("m1", headMenu);
+            Runner.AddMenu("m1", _head);
             Runner.AddMenu("m2", menu2);
+        }
+        public void Run()
+        {
+            Runner.Run(_head);
         }
         public string Action1(string key)
         {

@@ -15,7 +15,7 @@ namespace MenuBuilderTrying
         static void Main(string[] args)
         {
             Class1 x = new Class1();
-            x.Runner.Run();
+            x.Run();
         }
     }
 }
