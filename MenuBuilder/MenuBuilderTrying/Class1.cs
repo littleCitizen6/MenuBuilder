@@ -38,12 +38,12 @@ namespace MenuBuilderTrying
             Runner.AddMenu("m1", headMenu);
             Runner.AddMenu("m2", menu2);
         }
-        public string Action1()
+        public string Action1(string key)
         {
             _presenter.WaitForKeyDisplay("hello fucker");
             return "succeded";
         }
-        public string Previous()
+        public string Previous(string key)
         {
             if(_browser.PreviousOrDefult()==null)
             {
@@ -52,13 +52,13 @@ namespace MenuBuilderTrying
             return "succeded";
         }
 
-        public string Exit()
+        public string Exit(string key)
         {
             Runner.Exit();
             return "succeded";
         }
 
-        public string MoveToMenu2()
+        public string MoveToMenu2(string key)
         {
             Runner.Browser.Current = Runner.Menus["m2"];
             return "succeded";

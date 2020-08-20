@@ -35,7 +35,7 @@ namespace MenuBuilder
                 string choice = Provider.Get<string>();
                 if (ParamVaidator.IsValid(choice, Browser.Current))
                 {
-                    Browser.Current.Actions[choice]();
+                    Browser.Current.Actions[choice](choice);
                 }
                 else
                 {

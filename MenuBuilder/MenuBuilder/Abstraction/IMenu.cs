@@ -7,9 +7,9 @@ namespace MenuBuilder.Abstraction
 {
     public interface IMenu
     {
-        Dictionary<string, Func<string>> Actions { get; }
+        Dictionary<string, Func<string,string>> Actions { get; }
         string Content { get; }
-        void AddAction(string key, Func<string> func, string describe);
+        void AddAction(string key, Func<string,string> func, string describe);
         
     }
 }
