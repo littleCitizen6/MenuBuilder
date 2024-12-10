@@ -28,6 +28,12 @@ namespace MenuBuilder.Browsers
             _current = menu;
         }
 
+        public StackBrowser()
+        {
+            _history = new Stack<IMenu>();
+            Continue = true;
+        }
+
         public IMenu PreviousOrDefult()
         {
             _current = _history.Pop();
